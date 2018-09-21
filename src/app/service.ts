@@ -20,9 +20,17 @@ export class Service {
 
   }
   getCompanies(category) {
-
+    let companies = [];
+    this.http.get("assets/json-powered/db.json").subscribe( data => {
+      data['companies'].forEach(element => {
+        if (element.category == category) {
+          companies.push(element)
+        }
+      });
+    })
   }
   getCategory(id) {
-    
+    // let categories:object[] = [];
+    return this.http.get("assets/json-powered/db.json")
   }
 }
