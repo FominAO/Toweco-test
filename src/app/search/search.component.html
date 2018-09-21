@@ -1,0 +1,17 @@
+<input placeholder="Search" #searchInput type="text" (keyup)="search(searchInput.value)">
+<div class="search-result">
+  <div class="search-result__elem" *ngFor="let elem of searchResult" [ngClass]="elem.type == 'cat' ? 'category': 'company'" (click)="selectObj(elem)">
+    {{elem.value}}
+  </div>
+</div>
+<div *ngIf="companyChoosen" class="company-card" routerLink="/company" [queryParams] = "{id: company.id}">
+  <img class="company-card__logo" src="" alt="">
+  <div class="company-card__text">
+    <div class="label">{{company.name}}</div>
+    <div class="info">{{company.info}}</div>
+  </div>
+  <img src="../../assets/img/cross.png" alt="close" class="company-card__close" (click) = "clear()">
+</div>
+<app-stars></app-stars>
+<textarea #reviewText name="review" id="" cols="30" rows="10"></textarea>
+<button class="send-review" (click)="sendReview(reviewText.value)">Отправить отзыв</button>

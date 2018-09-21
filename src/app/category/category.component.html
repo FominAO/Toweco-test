@@ -1,0 +1,10 @@
+<div class="label">{{category.name}}</div>
+<div class="conpanies">
+  <div *ngFor="let company of companyList" class="company-card" routerLink="/company" [queryParams]="{id: company.id}">
+    <img class="company-card__logo" src="" alt="">
+    <div class="company-card__text">
+      <div class="label">{{company.name}}</div>
+      <div class="rate">{{company.rate}}</div>
+    </div>
+  </div>
+</div>
