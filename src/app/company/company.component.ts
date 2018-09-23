@@ -12,12 +12,14 @@ export class CompanyComponent implements OnInit {
     id:number,
     name:string,
     info:string,
-    rate:number
+    category:string
   }
+  reviewList = []
   companyRate:number;
   constructor(private routeAct: ActivatedRoute, private service:Service) { 
     this.routeAct.queryParams.subscribe(params => {
      this.company = service.getCompany(params.id);
+
     });
   }
 

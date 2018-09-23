@@ -1,12 +1,12 @@
+:host {
+  margin: 10px 0;
+}
 .half-star {
   height: 30px;
 }
-.half-star-container {
-  height: 30px;
+.half-star-container:nth-child(even) img{
+  transform: rotateY(180deg);
 }
-.half-star-container:nth-child(even) {
-  transform: rotate(180deg);
-}
-.half-star:nth-child(even) {
-  transform: rotate(180deg);
+.half-star:hover {
+  background-image: url('../../assets/img/starf.png')
 }

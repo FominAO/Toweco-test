@@ -12,7 +12,7 @@ export class Service {
       id: 123,
       name: "test Name",
       info: "Some info",
-      rate: 4.5
+      category: "Test Category"
     }
   }
   }
@@ -27,6 +27,7 @@ export class Service {
           companies.push(element)
         }
       });
+      return companies;
     })
   }
   getCategory(id) {

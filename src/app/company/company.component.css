@@ -1,0 +1,25 @@
+.label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.info {
+  margin: 15px 0;
+}
+.write-review {
+  margin: 15px 0;
+  padding: 5px 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: none;
+  transition: 0.5s;
+}
+.write-review:hover {
+  background-color: #60b0ff
+}
+.reviews {
+
+}
+.review {
+  
+}

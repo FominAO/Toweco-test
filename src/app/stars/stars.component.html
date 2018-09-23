@@ -1,18 +1,9 @@
-<div class="star-container">
+<div class="star-container" [style.opacity]="allowed ? '1' : '0.5'">
   <div class="stars-img">
-    <span class="half-star-container" *ngFor="let value of rateGrade; let i = index" [ngClass]="rate >= value">
-      <svg  class="half-star" version="1.1" [id]="'half-star' + i" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-        y="0px" viewBox="0 0 50 100">
-        <style type="text/css">
-          .st0 {
-            fill: none;
-            stroke: #000000;
-            stroke-width: 2;
-            stroke-miterlimit: 10;
-          }
-        </style>
-        <polyline class="st0" points="50,0 0,50 50,100 " />
-      </svg>
+    <span class="half-star-container" *ngFor="let value of rateGrade; let i = index">
+      <img class="half-star" [src]="rate >= value ? '../../assets/img/starf.png' : '../../assets/img/stare.png'"
+       (mouseover)="changeRate(value)"
+       (click)="lockRate(value)">
     </span>
     
   </div>

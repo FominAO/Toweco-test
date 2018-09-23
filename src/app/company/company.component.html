@@ -1,7 +1,6 @@
 <div class="label">{{company.name}}</div>
-<div class="info">{{company.info}}</div>
-<!-- <app-star [rate] = "company.rate"></app-star> -->
-<div class="rate">Рейтинг компании: {{company.rate}}</div>
+<div class="info">{{company.category}}</div>
+<app-stars [rate] = "company.rate"></app-stars>
 <button class="write-review" routerLink = "/" [queryParams] = "{id: company.id}">Оставить отзыв</button>
 <div class="reviews">
   <div class="review" *ngFor="let review of reviewList">

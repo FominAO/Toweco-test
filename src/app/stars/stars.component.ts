@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stars',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarsComponent implements OnInit {
   rateGrade = [ 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ]
+  
+  @Input() rate:number = 0;
+  @Input() allowed:boolean = false;
+  allowChanging = this.allowed;
   constructor() { }
 
   ngOnInit() {
   }
+  changeRate(value) {
+    if (this.allowed) {
+      this.rate = value;
+    }
+    
+  }
+  lockRate(value) {
+    if (this.allowChanging) {
+      this.rate = value
+      this.allowed = false;
+    }
 
+  }
 }
