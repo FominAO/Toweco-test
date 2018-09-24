@@ -168,7 +168,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"label\">{{category.name}}</div>\r\n<div class=\"conpanies\">\r\n  <div *ngFor=\"let company of companyList\" class=\"company-card\" routerLink=\"/company\" [queryParams]=\"{id: company.id}\">\r\n    <img class=\"company-card__logo\" src=\"\" alt=\"\">\r\n    <div class=\"company-card__text\">\r\n      <div class=\"label\">{{company.name}}</div>\r\n      <div class=\"rate\">{{company.rate}}</div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"label\">{{category.name}}</div>\r\n<div class=\"conpanies\">\r\n  <div *ngFor=\"let company of companyList; let i = index\" class=\"company-card\" routerLink=\"/company\" [queryParams]=\"{id: company.id}\">\r\n    <img class=\"company-card__logo\" src=\"\" alt=\"\">\r\n    <div class=\"company-card__text\">\r\n      <div class=\"label\">{{company.name}}</div>\r\n      <app-stars [rate] = \"rating[i]\"></app-stars>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -202,26 +202,54 @@ var CategoryComponent = /** @class */ (function () {
         var _this = this;
         this.routeAct = routeAct;
         this.service = service;
+        this.companyList = [];
         this.data = [];
         this.category = {};
+        this.rating = [];
         this.routeAct.queryParams.subscribe(function (params) {
             _this.categoryId = params.id;
-            service.getCategory().subscribe(function (cat) {
-                _this.data = cat['categories'];
-                _this.getCategory(_this.data);
+            service.getCategory().subscribe(function (data) {
+                data['categories'].forEach(function (elem) {
+                    if (elem.id == params.id) {
+                        _this.category = elem;
+                    }
+                });
+                data['companies'].forEach(function (elem) {
+                    if (elem.category == params.id) {
+                        _this.companyList.push(elem);
+                    }
+                });
+                _this.companiesGetRate();
             });
-            _this.companyList = service.getCompanies(params.id);
         });
     }
-    CategoryComponent.prototype.getCategory = function (data) {
+    CategoryComponent.prototype.ngOnInit = function () {
+    };
+    CategoryComponent.prototype.companiesGetRate = function () {
         var _this = this;
-        data.forEach(function (element) {
-            if (element.id == _this.categoryId) {
-                _this.category = element;
-            }
+        this.service.getCategory().subscribe(function (data) {
+            _this.companyList.forEach(function (elem) {
+                _this.getCompanyReviews(elem.id);
+            });
         });
     };
-    CategoryComponent.prototype.ngOnInit = function () {
+    CategoryComponent.prototype.getCompanyReviews = function (id) {
+        var _this = this;
+        var reviewList = [];
+        var revNum = 0;
+        this.service.getCategory().subscribe(function (data) {
+            data["review"].forEach(function (elem) {
+                if (elem.company == id) {
+                    reviewList.push(elem);
+                    revNum += (5 - elem.rating) * elem.relevance;
+                }
+            });
+            var a = (5 - (revNum / reviewList.length));
+            _this.rating.push(5 - (revNum / reviewList.length));
+        });
+    };
+    CategoryComponent.prototype.companiesSort = function () {
+        var sortedList = [];
     };
     CategoryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
