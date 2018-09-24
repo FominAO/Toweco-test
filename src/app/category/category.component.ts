@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
   constructor(private routeAct: ActivatedRoute, private service:Service) { 
     this.routeAct.queryParams.subscribe(params => {
       this.categoryId = params.id;
-    service.getCategory(params.id).subscribe(cat => {
+    service.getCategory().subscribe(cat => {
       this.data = cat['categories']
       this.getCategory(this.data)
     });

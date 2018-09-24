@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n  margin: 0;\n  background-color: #60b0ff\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\nbody {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n  margin: 0;\r\n  background-color: #60b0ff\r\n}"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\fomag\Documents\toweco-test\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! D:\practice\toweco-test\Toweco-test\src\styles.css */"./src/styles.css");
 
 
 /***/ })

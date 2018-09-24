@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".main-logo {\r\n  height: 80px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.container {\r\n  display: flex;\r\n  justify-content: center;\r\n}"
+module.exports = ".main-logo {\r\n  height: 80px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.container {\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n.app-search-insert {\r\n  display: flex;\r\n  flex-direction: column;\r\n }"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".main-logo {\r\n  height: 80px;\r\n  display: flex;\r\n  justi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-logo\"><a routerLink=\"/\"><img src=\"../assets/img/logo.png\" alt=\"Toweco\"></a></div>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div class=\"main-logo\"><a routerLink=\"/\"><img src=\"../assets/img/logo.png\" alt=\"Toweco\"></a></div>\r\n<div class=\"container\">\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -102,12 +102,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stars_stars_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./stars/stars.component */ "./src/app/stars/stars.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./service */ "./src/app/service.ts");
+/* harmony import */ var _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pipes/filter.pipe */ "./src/app/pipes/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -129,7 +131,8 @@ var AppModule = /** @class */ (function () {
                 _company_company_component__WEBPACK_IMPORTED_MODULE_3__["CompanyComponent"],
                 _category_category_component__WEBPACK_IMPORTED_MODULE_4__["CategoryComponent"],
                 _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"],
-                _stars_stars_component__WEBPACK_IMPORTED_MODULE_8__["StarsComponent"]
+                _stars_stars_component__WEBPACK_IMPORTED_MODULE_8__["StarsComponent"],
+                _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_11__["FilterPipe"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -165,7 +168,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"label\">{{category.name}}</div>\n<div class=\"conpanies\">\n  <div *ngFor=\"let company of companyList\" class=\"company-card\" routerLink=\"/company\" [queryParams]=\"{id: company.id}\">\n    <img class=\"company-card__logo\" src=\"\" alt=\"\">\n    <div class=\"company-card__text\">\n      <div class=\"label\">{{company.name}}</div>\n      <div class=\"rate\">{{company.rate}}</div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"label\">{{category.name}}</div>\r\n<div class=\"conpanies\">\r\n  <div *ngFor=\"let company of companyList\" class=\"company-card\" routerLink=\"/company\" [queryParams]=\"{id: company.id}\">\r\n    <img class=\"company-card__logo\" src=\"\" alt=\"\">\r\n    <div class=\"company-card__text\">\r\n      <div class=\"label\">{{company.name}}</div>\r\n      <div class=\"rate\">{{company.rate}}</div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -203,7 +206,7 @@ var CategoryComponent = /** @class */ (function () {
         this.category = {};
         this.routeAct.queryParams.subscribe(function (params) {
             _this.categoryId = params.id;
-            service.getCategory(params.id).subscribe(function (cat) {
+            service.getCategory().subscribe(function (cat) {
                 _this.data = cat['categories'];
                 _this.getCategory(_this.data);
             });
@@ -242,7 +245,7 @@ var CategoryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".label {\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n.info {\r\n  margin: 15px 0;\r\n}\r\n.write-review {\r\n  margin: 15px 0;\r\n  padding: 5px 10px;\r\n  border: 2px solid #fff;\r\n  border-radius: 5px;\r\n  background-color: #fff;\r\n  box-shadow: none;\r\n  transition: 0.5s;\r\n}\r\n.write-review:hover {\r\n  background-color: #60b0ff\r\n}\r\n.reviews {\r\n\r\n}\r\n.review {\r\n  margin-top: 10px;\r\n  border-bottom: 3px solid white;\r\n}\r\n.review__author {\r\n  width: 100%;\r\n  font-weight: bold;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin-bottom: 5px;\r\n}\r\n.review__author .stars{\r\n  \r\n}"
 
 /***/ }),
 
@@ -253,7 +256,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"label\">{{company.name}}</div>\n<div class=\"info\">{{company.info}}</div>\n<!-- <app-star [rate] = \"company.rate\"></app-star> -->\n<div class=\"rate\">Рейтинг компании: {{company.rate}}</div>\n<button class=\"write-review\" routerLink = \"/\" [queryParams] = \"{id: company.id}\">Оставить отзыв</button>\n<div class=\"reviews\">\n  <div class=\"review\" *ngFor=\"let review of reviewList\">\n    <div class=\"review__text\">{{review.Text}}</div>\n    <div class=\"review__rating\">stars{{review.rating}}</div>\n    <div class=\"review__rel\">{{review.relevance}}</div>\n  </div>\n</div>"
+module.exports = "<div class=\"label\">{{company.name}}</div>\r\n<div class=\"info\">{{company.category}}</div>\r\n<app-stars [rate] = \"rate\"></app-stars>\r\n<button class=\"write-review\" routerLink = \"/\" [queryParams] = \"{id: company.id}\">Оставить отзыв</button>\r\n<div class=\"reviews\">\r\n  <div>Отзывы ({{reviewList.length}})</div>\r\n  <div class=\"review\" *ngFor=\"let review of reviewList\">\r\n    <div class=\"review__author\">\r\n      <span>{{review.author}}</span> \r\n      <span class=\"stars\">\r\n        <app-stars [review]=\"true\" [rate] = \"review.rating\"></app-stars>\r\n      </span> </div>\r\n    <div class=\"review__text\">{{review.Text}}</div>\r\n    \r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -287,11 +290,39 @@ var CompanyComponent = /** @class */ (function () {
         var _this = this;
         this.routeAct = routeAct;
         this.service = service;
+        this.company = {
+            id: 0,
+            name: 'none',
+            category: 'none'
+        };
+        this.rate = 0;
+        this.reviewList = [];
         this.routeAct.queryParams.subscribe(function (params) {
-            _this.company = service.getCompany(params.id);
+            service.getCategory().subscribe(function (data) {
+                console.log(data);
+                data["companies"].forEach(function (elem) {
+                    if (elem.id == params.id) {
+                        _this.company = elem;
+                    }
+                });
+                data["review"].forEach(function (elem) {
+                    if (elem.company == params.id) {
+                        _this.reviewList.push(elem);
+                    }
+                });
+                _this.rate = _this.getRate();
+            });
         });
     }
     CompanyComponent.prototype.ngOnInit = function () {
+    };
+    CompanyComponent.prototype.getRate = function () {
+        var numerator = 0;
+        this.reviewList.forEach(function (rev) {
+            numerator += (5 - rev.rating) * rev.relevance;
+        });
+        console.log(numerator);
+        return 5 - (numerator / this.reviewList.length);
     };
     CompanyComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -302,6 +333,54 @@ var CompanyComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _service__WEBPACK_IMPORTED_MODULE_2__["Service"]])
     ], CompanyComponent);
     return CompanyComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes/filter.pipe.ts":
+/*!**************************************!*\
+  !*** ./src/app/pipes/filter.pipe.ts ***!
+  \**************************************/
+/*! exports provided: FilterPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterPipe", function() { return FilterPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var FilterPipe = /** @class */ (function () {
+    function FilterPipe() {
+    }
+    FilterPipe.prototype.transform = function (options, value) {
+        if (value == undefined || value == "")
+            return options;
+        var result = [];
+        var i = 0;
+        if (options != undefined) {
+            while (options[i] != undefined) {
+                if (options[i].name.toLowerCase().indexOf(value) > -1) {
+                    result.push(options[i]);
+                }
+                i++;
+            }
+        }
+        return result;
+    };
+    FilterPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'filter'
+        })
+    ], FilterPipe);
+    return FilterPipe;
 }());
 
 
@@ -340,7 +419,7 @@ var appRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ":host{\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  width: 90%;\r\n}\r\n.search-input, .review-input {\r\n  width: 100%;\r\n  max-width: 300px;\r\n  padding: 5px 10px;\r\n  border: 2px solid #fff;\r\n  border-radius: 5px;\r\n  background-color: #fff;\r\n  box-shadow: none;\r\n}\r\n.company-card {\r\n  width: 100%;\r\n  height: 100px;\r\n  max-width: 300px;\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  align-items: center;\r\n  border: 4px solid white;\r\n  border-radius: 5px;\r\n  margin-top: 10px;\r\n}\r\n.company-card__logo {\r\n  height: 50px;\r\n}\r\n.company-card__text {\r\n\r\n}\r\n.company-card__close {\r\n  height: 30px;\r\n}\r\n.send-review {\r\n  width: 100%;\r\n  max-width: 300px;\r\n  margin: 15px 0;\r\n  padding: 5px 10px;\r\n  border: 2px solid #fff;\r\n  border-radius: 5px;\r\n  background-color: #fff;\r\n  box-shadow: none;\r\n  transition: 0.5s;\r\n}\r\n.send-review:hover {\r\n  background-color: #60b0ff\r\n}\r\n.review-input {\r\n  resize: none;\r\n}\r\n.search-result {\r\n  display: flex;\r\n    flex-direction: column;\r\n    background-color: white;\r\n    z-index: 10;\r\n    width: 90%;\r\n    max-width: 300px;\r\n    padding: 0px 12px;\r\n    position: absolute;\r\n    top: 114px;\r\n    border-radius: 5px 5px 5px 5px;\r\n    height: 0px;\r\n    transition: 0.5s;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n.search-result_close .search-result__elem {\r\n  display: none;\r\n}\r\n.search-result_open {\r\n  height: 170px;\r\n}\r\n.search-result__elem {\r\n  margin: 5px 0;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -351,7 +430,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input placeholder=\"Search\" #searchInput type=\"text\" (keyup)=\"search(searchInput.value)\">\n<div class=\"search-result\">\n  <div class=\"search-result__elem\" *ngFor=\"let elem of searchResult\" [ngClass]=\"elem.type == 'cat' ? 'category': 'company'\" (click)=\"selectObj(elem)\">\n    {{elem.value}}\n  </div>\n</div>\n<div *ngIf=\"companyChoosen\" class=\"company-card\" routerLink=\"/company\" [queryParams] = \"{id: company.id}\">\n  <img class=\"company-card__logo\" src=\"\" alt=\"\">\n  <div class=\"company-card__text\">\n    <div class=\"label\">{{company.name}}</div>\n    <div class=\"info\">{{company.info}}</div>\n  </div>\n  <img src=\"../../assets/img/cross.png\" alt=\"close\" class=\"company-card__close\" (click) = \"clear()\">\n</div>\n<app-stars></app-stars>\n<textarea #reviewText name=\"review\" id=\"\" cols=\"30\" rows=\"10\"></textarea>\n<button class=\"send-review\" (click)=\"sendReview(reviewText.value)\">Отправить отзыв</button>"
+module.exports = "\r\n<input class=\"search-input\" placeholder=\"Search\" #searchInput type=\"text\" (keyup)=\"search(searchInput.value)\" (focusin)=\"showList = true\" >\r\n<div class=\"search-result\" [ngClass]=\"showList ? 'search-result_open' : 'search-result_close'\">\r\n  <div class=\"search-result__elem\" *ngFor=\"let elem of searchArray | filter : searchInput.value\" \r\n      [ngClass]=\"elem.type == 'category' ? 'category': 'company'\" \r\n      [routerLink] = \"(elem.type == 'category') ? '/category' : '/'\" \r\n      [queryParams] = \"{id: elem.id}\"\r\n      (click) = \"showList = false\">\r\n    {{elem.name}}\r\n  </div>\r\n</div>\r\n<div *ngIf=\"companyChoosen\" class=\"company-card\" routerLink=\"/company\" [queryParams] = \"{id: company.id}\">\r\n  <img class=\"company-card__logo\" [src]=\"'../../assets/img/logoC' + company.id + '.png'\">\r\n  <div class=\"company-card__text\">\r\n    <div class=\"category\">{{company.category}}</div>\r\n    <div class=\"name\">{{company.name}}</div>\r\n  </div>\r\n  <img src=\"../../assets/img/cross.png\" alt=\"close\" class=\"company-card__close\" (click) = \"clear()\">\r\n</div>\r\n<app-stars [allowed]=\"companyChoosen\"></app-stars>\r\n<textarea [disabled]=\"!companyChoosen\" class=\"review-input\" #reviewText name=\"review\" id=\"\" cols=\"30\" rows=\"10\"></textarea>\r\n<button [disabled]=\"!companyChoosen\" class=\"send-review\" (click)=\"sendReview(reviewText.value)\">Отправить отзыв</button>\r\n"
 
 /***/ }),
 
@@ -366,6 +445,8 @@ module.exports = "<input placeholder=\"Search\" #searchInput type=\"text\" (keyu
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service */ "./src/app/service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -376,18 +457,77 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent() {
+    function SearchComponent(routeAct, service) {
+        var _this = this;
+        this.routeAct = routeAct;
+        this.service = service;
+        this.companyChoosen = false;
+        this.company = {
+            id: 2,
+            name: "Name",
+            category: "Category"
+        };
+        this.companies = [];
+        this.categories = [];
+        this.searchArray = [];
+        this.searchResult = [];
+        service.getCategory().subscribe(function (data) {
+            _this.companies = data['companies'];
+            _this.categories = data['categories'];
+            _this.makeSearchArray();
+        });
+        routeAct.queryParams.subscribe(function (params) {
+            _this.selectObj({ type: "company", id: params.id });
+            _this.company['id'] = params.id;
+        });
     }
     SearchComponent.prototype.ngOnInit = function () {
+    };
+    SearchComponent.prototype.selectObj = function (obj) {
+        var _this = this;
+        this.clear();
+        if (obj['type'] == 'company' && obj['id'] != undefined) {
+            this.companyChoosen = true;
+            this.service.getCategory().subscribe(function (data) {
+                data['companies'].forEach(function (elem) {
+                    if (elem.id == obj['id']) {
+                        _this.company = elem;
+                    }
+                });
+                data['categories'].forEach(function (elem) {
+                    if (elem.id == _this.company.category) {
+                        _this.company.category = elem.name;
+                    }
+                });
+            });
+        }
+    };
+    SearchComponent.prototype.makeSearchArray = function () {
+        var _this = this;
+        this.companies.forEach(function (elem) {
+            _this.searchArray.push({ type: 'company', name: elem.name, id: elem.id });
+        });
+        this.categories.forEach(function (elem) {
+            _this.searchArray.push({ type: 'category', name: elem.name, id: elem.id });
+        });
+    };
+    SearchComponent.prototype.clear = function () {
+        this.companyChoosen = false;
+    };
+    SearchComponent.prototype.search = function (str) {
+        this.searchResult = this.companies;
     };
     SearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-search',
+            host: { class: 'app-search-insert' },
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/search/search.component.html"),
-            styles: [__webpack_require__(/*! ./search.component.css */ "./src/app/search/search.component.css")]
+            styles: [__webpack_require__(/*! ./search.component.css */ "./src/app/search/search.component.css")],
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _service__WEBPACK_IMPORTED_MODULE_2__["Service"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -424,16 +564,24 @@ var Service = /** @class */ (function () {
         this.http = http;
     }
     Service.prototype.getCompany = function (id) {
-        if (id == 1) {
-            return {
-                id: 123,
-                name: "test Name",
-                info: "Some info",
-                rate: 4.5
-            };
-        }
+        this.http.get("assets/json-powered/db.json").subscribe(function (data) {
+            data['companies'].forEach(function (element) {
+                if (element.id == id) {
+                }
+            });
+        });
+        return;
     };
     Service.prototype.getReviews = function (id) {
+        var reviews = [];
+        this.http.get("assets/json-powered/db.json").subscribe(function (data) {
+            data['companies'].forEach(function (element) {
+                if (element.company == id) {
+                    reviews.push(element);
+                }
+            });
+            return reviews;
+        });
     };
     Service.prototype.getCompanies = function (category) {
         var companies = [];
@@ -443,9 +591,10 @@ var Service = /** @class */ (function () {
                     companies.push(element);
                 }
             });
+            return companies;
         });
     };
-    Service.prototype.getCategory = function (id) {
+    Service.prototype.getCategory = function () {
         // let categories:object[] = [];
         return this.http.get("assets/json-powered/db.json");
     };
@@ -467,7 +616,7 @@ var Service = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".half-star {\r\n  height: 30px;\r\n}\r\n.half-star-container {\r\n  height: 30px;\r\n}\r\n.half-star-container:nth-child(even) {\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg);\r\n}\r\n.half-star:nth-child(even) {\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg);\r\n}"
+module.exports = ":host {\r\n  margin: 10px 0;\r\n}\r\n.half-star {\r\n  height: 30px;\r\n}\r\n.half-star-container:nth-child(even) img{\r\n  -webkit-transform: rotateY(180deg);\r\n          transform: rotateY(180deg);\r\n}\r\n.half-star:hover {\r\n  background-image: url('starf.png')\r\n}\r\n.small {\r\n  -webkit-transform: scale(0.5);\r\n          transform: scale(0.5);\r\n  margin-right: -35px;\r\n}"
 
 /***/ }),
 
@@ -478,7 +627,7 @@ module.exports = ".half-star {\r\n  height: 30px;\r\n}\r\n.half-star-container {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"star-container\">\n  <div class=\"stars-img\">\n    <span class=\"half-star-container\" *ngFor=\"let value of rateGrade; let i = index\" [ngClass]=\"rate >= value\">\n      <svg  class=\"half-star\" version=\"1.1\" [id]=\"'half-star' + i\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\"\n        y=\"0px\" viewBox=\"0 0 50 100\">\n        <style type=\"text/css\">\n          .st0 {\n            fill: none;\n            stroke: #000000;\n            stroke-width: 2;\n            stroke-miterlimit: 10;\n          }\n        </style>\n        <polyline class=\"st0\" points=\"50,0 0,50 50,100 \" />\n      </svg>\n    </span>\n    \n  </div>\n  <span class=\"fill-star\" *ngFor=\"let value of rateGrade\" (mouseover) = \"fillStarBar(value)\"></span>\n</div>"
+module.exports = "<div class=\"star-container\" [style.opacity]=\"allowed ? '1' : '0.5'\" [ngClass]=\"review ? 'small': ''\">\r\n  <div class=\"stars-img\">\r\n    <span class=\"half-star-container\" *ngFor=\"let value of rateGrade; let i = index\">\r\n      <img class=\"half-star\" [src]=\"rate >= value ? '../../assets/img/starf.png' : '../../assets/img/stare.png'\"\r\n       (mouseover)=\"changeRate(value)\"\r\n       (click)=\"lockRate(value)\">\r\n    </span>\r\n    \r\n  </div>\r\n  <span class=\"fill-star\" *ngFor=\"let value of rateGrade\" (mouseover) = \"fillStarBar(value)\"></span>\r\n</div>"
 
 /***/ }),
 
@@ -506,9 +655,36 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var StarsComponent = /** @class */ (function () {
     function StarsComponent() {
         this.rateGrade = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+        this.rate = 0;
+        this.allowed = false;
+        this.review = false;
+        this.allowChanging = this.allowed;
     }
     StarsComponent.prototype.ngOnInit = function () {
     };
+    StarsComponent.prototype.changeRate = function (value) {
+        if (this.allowed) {
+            this.rate = value;
+        }
+    };
+    StarsComponent.prototype.lockRate = function (value) {
+        if (this.allowChanging) {
+            this.rate = value;
+            this.allowed = false;
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], StarsComponent.prototype, "rate", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], StarsComponent.prototype, "allowed", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], StarsComponent.prototype, "review", void 0);
     StarsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-stars',
@@ -584,7 +760,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\fomag\Documents\toweco-test\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\practice\toweco-test\Toweco-test\src\main.ts */"./src/main.ts");
 
 
 /***/ })

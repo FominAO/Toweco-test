@@ -10,13 +10,15 @@ import { appRoutes } from './routes';
 import { StarsComponent } from './stars/stars.component'
 import { HttpClientModule } from '@angular/common/http';
 import { Service } from './service';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     CompanyComponent,
     CategoryComponent,
     SearchComponent,
-    StarsComponent
+    StarsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

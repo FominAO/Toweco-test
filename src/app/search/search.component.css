@@ -50,3 +50,29 @@
 .review-input {
   resize: none;
 }
+.search-result {
+  display: flex;
+    flex-direction: column;
+    background-color: white;
+    z-index: 10;
+    width: 90%;
+    max-width: 300px;
+    padding: 0px 12px;
+    position: absolute;
+    top: 114px;
+    border-radius: 5px 5px 5px 5px;
+    height: 0px;
+    transition: 0.5s;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.search-result_close .search-result__elem {
+  display: none;
+}
+.search-result_open {
+  height: 170px;
+}
+.search-result__elem {
+  margin: 5px 0;
+}
+

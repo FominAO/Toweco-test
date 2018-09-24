@@ -1,4 +1,4 @@
-<div class="star-container" [style.opacity]="allowed ? '1' : '0.5'">
+<div class="star-container" [style.opacity]="allowed ? '1' : '0.5'" [ngClass]="review ? 'small': ''">
   <div class="stars-img">
     <span class="half-star-container" *ngFor="let value of rateGrade; let i = index">
       <img class="half-star" [src]="rate >= value ? '../../assets/img/starf.png' : '../../assets/img/stare.png'"

@@ -10,3 +10,7 @@
 .half-star:hover {
   background-image: url('../../assets/img/starf.png')
 }
+.small {
+  transform: scale(0.5);
+  margin-right: -35px;
+}

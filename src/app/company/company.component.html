@@ -1,11 +1,16 @@
 <div class="label">{{company.name}}</div>
 <div class="info">{{company.category}}</div>
-<app-stars [rate] = "company.rate"></app-stars>
+<app-stars [rate] = "rate"></app-stars>
 <button class="write-review" routerLink = "/" [queryParams] = "{id: company.id}">Оставить отзыв</button>
 <div class="reviews">
+  <div>Отзывы ({{reviewList.length}})</div>
   <div class="review" *ngFor="let review of reviewList">
+    <div class="review__author">
+      <span>{{review.author}}</span> 
+      <span class="stars">
+        <app-stars [review]="true" [rate] = "review.rating"></app-stars>
+      </span> </div>
     <div class="review__text">{{review.Text}}</div>
-    <div class="review__rating">stars{{review.rating}}</div>
-    <div class="review__rel">{{review.relevance}}</div>
+    
   </div>
 </div>

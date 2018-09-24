@@ -10,6 +10,7 @@ export class StarsComponent implements OnInit {
   
   @Input() rate:number = 0;
   @Input() allowed:boolean = false;
+  @Input() review:boolean = false;
   allowChanging = this.allowed;
   constructor() { }
 

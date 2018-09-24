@@ -16,33 +16,33 @@
   "companies": [
     {
       "id": 111,
-      "name": "Company Name 1",
-      "categoty": 1
+      "name": "Company 111 Name",
+      "category": 1
     },
     {
       "id": 112,
       "name": "Company Name 2",
-      "categoty": 1
+      "category": 1
     },
     {
       "id": 113,
       "name": "Company Name 3",
-      "categoty": 2
+      "category": 2
     },
     {
       "id": 114,
       "name": "Company Name 4",
-      "categoty": 2
+      "category": 2
     },
     {
       "id": 115,
       "name": "Company Name 5",
-      "categoty": 3
+      "category": 3
     },
     {
       "id": 116,
       "name": "Company Name 6",
-      "categoty": 3
+      "category": 3
     }
   ],
   "review": [

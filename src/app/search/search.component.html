@@ -1,8 +1,12 @@
 
-<input class="search-input" placeholder="Search" #searchInput type="text" (keyup)="search(searchInput.value)">
-<div class="search-result">
-  <div class="search-result__elem" *ngFor="let elem of searchResult" [ngClass]="elem.type == 'cat' ? 'category': 'company'" (click)="selectObj(elem)">
-    {{elem.value}}
+<input class="search-input" placeholder="Search" #searchInput type="text" (keyup)="search(searchInput.value)" (focusin)="showList = true" >
+<div class="search-result" [ngClass]="showList ? 'search-result_open' : 'search-result_close'">
+  <div class="search-result__elem" *ngFor="let elem of searchArray | filter : searchInput.value" 
+      [ngClass]="elem.type == 'category' ? 'category': 'company'" 
+      [routerLink] = "(elem.type == 'category') ? '/category' : '/'" 
+      [queryParams] = "{id: elem.id}"
+      (click) = "showList = false">
+    {{elem.name}}
   </div>
 </div>
 <div *ngIf="companyChoosen" class="company-card" routerLink="/company" [queryParams] = "{id: company.id}">
